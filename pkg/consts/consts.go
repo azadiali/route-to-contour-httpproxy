@@ -1,9 +1,22 @@
 package consts
-
+import (
+    "os"
+)
 type CustomError string
 
 func (e CustomError) Error() string { return string(e) }
 
+
+var (
+    IngressClassPrivate = getEnv("INGRESS_CLASS_PRIVATE", "private")
+)
+
+func getEnv(key, fallback string) string {
+    if value, exists := os.LookupEnv(key); exists {
+        return value
+    }
+    return fallback
+}
 const (
 	LabelKeyRouterName = "router"
 
@@ -25,7 +38,6 @@ const (
 
 	RateLimitUnitMinute = "minute"
 
-	IngressClassPrivate = "private"
 	IngressClassInterDc = "inter-dc"
 	IngressClassPublic  = "public"
 

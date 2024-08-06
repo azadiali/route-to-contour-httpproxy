@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: route-to-contour-httpproxy-config
+data:
+  ingressClassPrivate: {{ .Values.ingressClassPrivate }}
+  

@@ -29,6 +29,11 @@ spec:
         env:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
+        - name: INGRESS_CLASS_PRIVATE
+          valueFrom:
+            configMapKeyRef:
+              name: route-to-contour-httpproxy-config
+              key: ingressClassPrivate
         image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
           | default .Chart.AppVersion }}
         livenessProbe:
@@ -44,8 +49,7 @@ spec:
             port: 8081
           initialDelaySeconds: 5
           periodSeconds: 10
-        resources: {{- toYaml .Values.controllerManager.manager.resources | nindent 10
-          }}
+        resources: {{- toYaml .Values.controllerManager.manager.resources | nindent 10 }}
         volumeMounts:
         - mountPath: /route-to-contour-httpproxy/config/
           name: config-volume
