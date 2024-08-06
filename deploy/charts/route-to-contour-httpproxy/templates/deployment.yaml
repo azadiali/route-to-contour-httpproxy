@@ -30,10 +30,7 @@ spec:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
         - name: INGRESS_CLASS_PRIVATE
-          valueFrom:
-            configMapKeyRef:
-              name: route-to-contour-httpproxy-config
-              key: ingressClassPrivate
+          value: {{ .Values.ingressClassPrivate }}
         image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
           | default .Chart.AppVersion }}
         livenessProbe:
