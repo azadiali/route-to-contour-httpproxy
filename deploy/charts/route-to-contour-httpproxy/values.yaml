@@ -36,6 +36,7 @@ ingressClass:
   private: "private"
   public: "public"
   interDC: "inter-dc"
+  default: "private"
 
 TLSSecret:
   NS: "openshift-ingress"

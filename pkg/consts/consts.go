@@ -11,8 +11,10 @@ var (
     IngressClassPrivate = getEnv("INGRESS_CLASS_PRIVATE", "private")
 	IngressClassPublic = getEnv("INGRESS_CLASS_PUBLIC", "public")
     IngressClassInterDc = getEnv("INGRESS_CLASS_INTER_DC", "inter-dc")
+	IngressClassDefault = getEnv("INGRESS_CLASS_DEFAULT", "private")
 	TLSSecretNS = getEnv("TLS_SECRET_NS", "openshift-ingress")
 	TLSSecretName = getEnv("TLS_SECRET_NAME","letsencrypt")
+	GlobalTLSSecretName = TLSSecretNS + "/" + TLSSecretName
 )
 
 func getEnv(key, fallback string) string {
@@ -35,9 +37,6 @@ const (
 	AnnotationKeyPrefix               = "snappcloud.io/"
 	AnnotationKeyReconciliationPaused = AnnotationKeyPrefix + "paused"
 	AnnotationKeyHttp1Enforced        = AnnotationKeyPrefix + "force-h1"
-
-
-	GlobalTLSSecretName = TLSSecretNS + "/" + TLSSecretName
 
 	RateLimitUnitMinute = "minute"
 

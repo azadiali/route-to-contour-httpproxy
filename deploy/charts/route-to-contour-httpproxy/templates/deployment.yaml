@@ -35,6 +35,8 @@ spec:
           value: {{ .Values.ingressClass.public }}
         - name: INGRESS_CLASS_INTER_DC
           value: {{ .Values.ingressClass.interDC }}
+        - name: INGRESS_CLASS_DEFAULT
+          value: {{ .Values.ingressClass.default }}
         - name: TLS_SECRET_NS
           value: {{ .Values.TLSSecret.NS }}
         - name: TLS_SECRET_NAME
