@@ -9,6 +9,10 @@ func (e CustomError) Error() string { return string(e) }
 
 var (
     IngressClassPrivate = getEnv("INGRESS_CLASS_PRIVATE", "private")
+	IngressClassPublic = getEnv("INGRESS_CLASS_PUBLIC", "public")
+    IngressClassInterDc = getEnv("INGRESS_CLASS_INTER_DC", "inter-dc")
+	TLSSecretNS = getEnv("TLS_SECRET_NS", "openshift-ingress")
+	TLSSecretName = getEnv("TLS_SECRET_NAME","letsencrypt")
 )
 
 func getEnv(key, fallback string) string {
@@ -32,14 +36,10 @@ const (
 	AnnotationKeyReconciliationPaused = AnnotationKeyPrefix + "paused"
 	AnnotationKeyHttp1Enforced        = AnnotationKeyPrefix + "force-h1"
 
-	TLSSecretNS         = "openshift-ingress"
-	TLSSecretName       = "letsencrypt"
+
 	GlobalTLSSecretName = TLSSecretNS + "/" + TLSSecretName
 
 	RateLimitUnitMinute = "minute"
-
-	IngressClassInterDc = "inter-dc"
-	IngressClassPublic  = "public"
 
 	RouteShardLabel = "router"
 

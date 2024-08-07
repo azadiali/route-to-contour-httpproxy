@@ -30,7 +30,15 @@ spec:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
         - name: INGRESS_CLASS_PRIVATE
-          value: {{ .Values.ingressClassPrivate }}
+          value: {{ .Values.ingressClass.private }}
+        - name: INGRESS_CLASS_PUBLIC
+          value: {{ .Values.ingressClass.public }}
+        - name: INGRESS_CLASS_INTER_DC
+          value: {{ .Values.ingressClass.interDC }}
+        - name: TLS_SECRET_NS
+          value: {{ .Values.TLSSecret.NS }}
+        - name: TLS_SECRET_NAME
+          value: {{ .Values.TLSSecret.Name }}
         image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
           | default .Chart.AppVersion }}
         livenessProbe:
