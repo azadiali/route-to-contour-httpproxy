@@ -41,6 +41,8 @@ spec:
           value: {{ .Values.TLSSecret.NS }}
         - name: TLS_SECRET_NAME
           value: {{ .Values.TLSSecret.Name }}
+        - name: ENABLE_FALLBACK_CERTIFICATE
+          value: {{.Values.TLSSecret.EnableFallbackCertificate}}
         image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
           | default .Chart.AppVersion }}
         livenessProbe:

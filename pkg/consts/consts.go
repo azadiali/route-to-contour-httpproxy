@@ -1,6 +1,7 @@
 package consts
 import (
     "os"
+	"strconv"
 )
 type CustomError string
 
@@ -15,7 +16,7 @@ var (
 	TLSSecretNS = getEnv("TLS_SECRET_NS", "openshift-ingress")
 	TLSSecretName = getEnv("TLS_SECRET_NAME","letsencrypt")
 	GlobalTLSSecretName = TLSSecretNS + "/" + TLSSecretName
-)
+    EnableFallbackCertificate, _ = strconv.ParseBool(getEnv("ENABLE_FALLBACK_CERTIFICATE", "true")))
 
 func getEnv(key, fallback string) string {
     if value, exists := os.LookupEnv(key); exists {

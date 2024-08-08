@@ -32,6 +32,7 @@ managerMetricsService:
     protocol: TCP
     targetPort: https
   type: ClusterIP
+
 ingressClass: 
   private: "private"
   public: "public"
@@ -41,3 +42,4 @@ ingressClass:
 TLSSecret:
   NS: "openshift-ingress"
   Name: "letsencrypt"
+  EnableFallbackCertificate: "true"
