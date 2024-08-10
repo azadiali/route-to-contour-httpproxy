@@ -82,7 +82,7 @@ spec:
           value: private
         - name: TLS_SECRET_NS
           value: openshift-ingress
-        - name: TLS_SECRET_NANE
+        - name: TLS_SECRET_NAME
           value: letsencrypt
         - name: ENABLE_FALLBACK_CERTIFICATE
           value: "true"
