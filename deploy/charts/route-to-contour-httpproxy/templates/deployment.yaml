@@ -29,20 +29,6 @@ spec:
         env:
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetesClusterDomain }}
-        - name: INGRESS_CLASS_PRIVATE
-          value: {{ .Values.ingressClass.private }}
-        - name: INGRESS_CLASS_PUBLIC
-          value: {{ .Values.ingressClass.public }}
-        - name: INGRESS_CLASS_INTER_DC
-          value: {{ .Values.ingressClass.interDC }}
-        - name: INGRESS_CLASS_DEFAULT
-          value: {{ .Values.ingressClass.default }}
-        - name: TLS_SECRET_NS
-          value: {{ .Values.TLSSecret.NS }}
-        - name: TLS_SECRET_NAME
-          value: {{ .Values.TLSSecret.Name }}
-        - name: ENABLE_FALLBACK_CERTIFICATE
-          value: {{.Values.TLSSecret.EnableFallbackCertificate}}
         image: {{ .Values.controllerManager.manager.image.repository }}:{{ .Values.controllerManager.manager.image.tag
           | default .Chart.AppVersion }}
         livenessProbe:
@@ -58,7 +44,8 @@ spec:
             port: 8081
           initialDelaySeconds: 5
           periodSeconds: 10
-        resources: {{- toYaml .Values.controllerManager.manager.resources | nindent 10 }}
+        resources: {{- toYaml .Values.controllerManager.manager.resources | nindent 10
+          }}
         volumeMounts:
         - mountPath: /route-to-contour-httpproxy/config/
           name: config-volume

@@ -6,7 +6,6 @@ on:
       - 'v*'
     branches:
       - main
-      - Set_ingressClass_name_via_values
 
 jobs:
   docker:
