@@ -32,14 +32,3 @@ managerMetricsService:
     protocol: TCP
     targetPort: https
   type: ClusterIP
-
-ingressClass: 
-  private: "private"
-  public: "public"
-  interDC: "inter-dc"
-  default: "private"
-
-TLSSecret:
-  NS: "openshift-ingress"
-  Name: "letsencrypt"
-  EnableFallbackCertificate: "true"
