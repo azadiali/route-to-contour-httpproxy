@@ -32,3 +32,4 @@ managerMetricsService:
     protocol: TCP
     targetPort: https
   type: ClusterIP
+  
